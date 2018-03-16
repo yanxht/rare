@@ -1,0 +1,4 @@
+load("/Volumes/GoogleDrive/My Drive/rpkg/rare/data/mtcars.rda")
+load("/Volumes/GoogleDrive/My Drive/rpkg/rare/data/A.rda")
+load("/Volumes/GoogleDrive/My Drive/rpkg/rare/data/dtm.rda")
+load("/Volumes/GoogleDrive/My Drive/rpkg/rare/data/data_dtm.rda")

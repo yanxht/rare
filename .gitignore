@@ -1,0 +1,9 @@
+R/.Rhistory
+data/.Rhistory
+vignettes/.Rhistory
+inst/doc
+data-raw
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata

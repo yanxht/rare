@@ -1,0 +1,30 @@
+Package: rare
+Type: Package
+Title: Linear Model with Tree-Based Lasso Regularization 
+       for Rare Features
+Version: 0.1.0
+Author: Xiaohan Yan [aut, cre], Jacob Bien [aut, cre]
+Maintainer: Xiaohan Yan <xy257@cornell.edu>
+Description: Implementation of an ADMM algorithm for fitting a linear model 
+    with tree-based lasso regularization, which is proposed in Algorithm 1 
+    of Yan and Bien (2018) "Rare Feature Selection in High Dimensions". The 
+    package allows efficient model fitting on the entire 2-dimensional 
+    regularization path for large datasets. The complete set of functions 
+    also makes the entire process of tuning regularization parameters and 
+    visualizing results hassle-free.
+Depends:
+    R (>= 3.2.1)
+Imports:
+    Matrix,
+    glmnet,
+    Rcpp
+Suggests:
+    knitr,
+    dendextend,
+    rmarkdown
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
+LinkingTo: Rcpp, RcppArmadillo

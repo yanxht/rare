@@ -2,7 +2,7 @@
 output: rmarkdown::html_document
 bibliography: ref.bib
 vignette: >
-  %\VignetteIndexEntry{Using the hsm package}
+  %\VignetteIndexEntry{Using the rare package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

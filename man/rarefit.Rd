@@ -113,7 +113,7 @@ ourfit <- rarefit(y = data.rating[ts], X = data.dtm[ts, ], hc = data.hc, lam.min
 
 }
 \references{
-Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}.
+Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
 }
 \seealso{
 \code{\link{rarefit.cv}}, \code{\link{rarefit.predict}}

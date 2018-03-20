@@ -12,7 +12,7 @@
 #' \code{\link{group.plot}}.
 #'
 #' @author Xiaohan Yan \email{xy257@@cornell.edu}, Jacob Bien
-#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}.
+#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
 #' @name rare-package
 #' @docType package
 #' @useDynLib rare

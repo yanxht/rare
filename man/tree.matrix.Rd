@@ -54,7 +54,7 @@ A <- tree.matrix(hc)
 
 }
 \references{
-Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}.
+Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
 }
 \seealso{
 \code{\link{find.leaves}} for finding descendant leaves of a node.

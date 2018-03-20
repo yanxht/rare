@@ -84,7 +84,7 @@ find.leaves <- function(ind, merge) {
 #' hc <- hclust(dist(USArrests), "ave")
 #' A <- tree.matrix(hc)
 #'
-#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}.
+#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
 #'
 #' @export
 tree.matrix <- function(hc) {
@@ -186,7 +186,7 @@ tree.matrix <- function(hc) {
 #'
 #' @seealso \code{\link{rarefit.cv}}, \code{\link{rarefit.predict}}
 #'
-#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}.
+#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
 #'
 #' @export
 rarefit <- function(y, X, A = NULL, Q = NULL, hc, intercept = T, lambda = NULL, alpha = NULL,

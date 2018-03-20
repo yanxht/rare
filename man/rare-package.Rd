@@ -18,7 +18,7 @@ Its main functions are \code{\link{rarefit}}, \code{\link{rarefit.cv}},
 \code{\link{group.plot}}.
 }
 \references{
-Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}.
+Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
 }
 \author{
 Xiaohan Yan \email{xy257@cornell.edu}, Jacob Bien

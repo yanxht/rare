@@ -84,7 +84,7 @@ find.leaves <- function(ind, merge) {
 #' hc <- hclust(dist(USArrests), "ave")
 #' A <- tree.matrix(hc)
 #'
-#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
+#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}, \url{https://arxiv.org/abs/1803.06675}.
 #'
 #' @export
 tree.matrix <- function(hc) {
@@ -102,7 +102,8 @@ tree.matrix <- function(hc) {
 #' Fit the rare feature selection model proposed in Yan and Bien (2018):
 #' \deqn{min_{\beta, \gamma} 0.5 * ||y - X\beta - \beta_01_n||_2^2 +
 #' \lambda * (\alpha * ||\gamma_{-root}||_1 + (1-\alpha) * ||\beta||_1)}
-#' using the ADMM approach proposed in Algorithm 1 of the same paper.
+#' using an alternating direction method of multipliers (ADMM) algorithm
+#' described in Algorithm 1 of the same paper.
 #' The regularization path is computed over a two-dimensional grid of
 #' regularization parameters: \code{lambda} and \code{alpha}. Of the two,
 #' \code{lambda} controls the overall amount of regularization, and \code{alpha}
@@ -186,7 +187,7 @@ tree.matrix <- function(hc) {
 #'
 #' @seealso \code{\link{rarefit.cv}}, \code{\link{rarefit.predict}}
 #'
-#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
+#' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}, \url{https://arxiv.org/abs/1803.06675}.
 #'
 #' @export
 rarefit <- function(y, X, A = NULL, Q = NULL, hc, intercept = T, lambda = NULL, alpha = NULL,

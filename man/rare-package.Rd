@@ -6,7 +6,7 @@
 \title{Model path for tree-based lasso framework for selecting rare features}
 \description{
 The package fits the linear model with tree-based lasso regularization proposed in
-Yan and Bien (2018) using Alternating Direction Method of Multipliers
+Yan and Bien (2018) using alternating direction method of multipliers
 (ADMM). The ADMM algorithm is proposed in Algorithm 1 of the same paper.
 The package also provides tools for tuning regularization
 parameters, making predictions from the fitted model and visualizing recovered
@@ -18,7 +18,7 @@ Its main functions are \code{\link{rarefit}}, \code{\link{rarefit.cv}},
 \code{\link{group.plot}}.
 }
 \references{
-Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
+Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}, \url{https://arxiv.org/abs/1803.06675}.
 }
 \author{
 Xiaohan Yan \email{xy257@cornell.edu}, Jacob Bien

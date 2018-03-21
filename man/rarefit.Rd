@@ -88,7 +88,8 @@ with \code{\link[glmnet]{glmnet}} on \code{beta}, in which case \code{gamma[[j]]
 Fit the rare feature selection model proposed in Yan and Bien (2018):
 \deqn{min_{\beta, \gamma} 0.5 * ||y - X\beta - \beta_01_n||_2^2 +
 \lambda * (\alpha * ||\gamma_{-root}||_1 + (1-\alpha) * ||\beta||_1)}
-using the ADMM approach proposed in Algorithm 1 of the same paper.
+using an alternating direction method of multipliers (ADMM) algorithm
+described in Algorithm 1 of the same paper.
 The regularization path is computed over a two-dimensional grid of
 regularization parameters: \code{lambda} and \code{alpha}. Of the two,
 \code{lambda} controls the overall amount of regularization, and \code{alpha}
@@ -113,7 +114,7 @@ ourfit <- rarefit(y = data.rating[ts], X = data.dtm[ts, ], hc = data.hc, lam.min
 
 }
 \references{
-Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions} \url{https://arxiv.org/abs/1803.06675}.
+Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}, \url{https://arxiv.org/abs/1803.06675}.
 }
 \seealso{
 \code{\link{rarefit.cv}}, \code{\link{rarefit.predict}}

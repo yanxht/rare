@@ -1,6 +1,6 @@
-#' Perform K-fold cross-validation
+#' Perform K-fold cross validation
 #'
-#' The function does K-fold cross-validaton to choose an optimal pair of (\code{lambda}, \code{alpha})
+#' The function does K-fold cross validaton (CV) to choose an optimal pair of (\code{lambda}, \code{alpha})
 #' on which the model performs best according to the chosen error metric: mean squared error
 #' or mean absolute error.
 #'

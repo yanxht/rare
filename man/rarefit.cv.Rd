@@ -2,7 +2,7 @@
 % Please edit documentation in R/rare.cv.R
 \name{rarefit.cv}
 \alias{rarefit.cv}
-\title{Perform K-fold cross-validation}
+\title{Perform K-fold cross validation}
 \usage{
 rarefit.cv(fitObj, y, X, errtype = "mean-squared-error", nfolds = 5, ...)
 }
@@ -36,7 +36,7 @@ and \emph{mean-absolute-error}.}
 \item{alpha.best}{Value of \code{alpha} minimizing CV error.}
 }
 \description{
-The function does K-fold cross-validaton to choose an optimal pair of (\code{lambda}, \code{alpha})
+The function does K-fold cross validaton (CV) to choose an optimal pair of (\code{lambda}, \code{alpha})
 on which the model performs best according to the chosen error metric: mean squared error
 or mean absolute error.
 }

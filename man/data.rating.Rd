@@ -6,7 +6,7 @@
 \title{TripAdvisor hotel review ratings}
 \format{An object of class \code{integer} of length 500.}
 \source{
-TripAdvisor Data Set: \url{http://times.cs.uiuc.edu/~wang296/Data/}
+TripAdvisor Data Set used in \url{https://www.cs.virginia.edu/~hw5x/paper/rp166f-wang.pdf}
 }
 \usage{
 data.rating

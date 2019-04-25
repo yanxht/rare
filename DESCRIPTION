@@ -2,7 +2,7 @@ Package: rare
 Type: Package
 Title: Linear Model with Tree-Based Lasso Regularization 
        for Rare Features
-Version: 0.1.0
+Version: 0.1.1
 Author: Xiaohan Yan [aut, cre], Jacob Bien [aut, cre]
 Maintainer: Xiaohan Yan <xy257@cornell.edu>
 Description: Implementation of an alternating direction method of multipliers
@@ -26,7 +26,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 LinkingTo: Rcpp, RcppArmadillo
 URL: https://github.com/yanxht/rare
 BugReports: https://github.com/yanxht/rare/issues

@@ -27,6 +27,7 @@ and Bien (2018). The matrix encodes ancestor-descendant relationships between le
 and tree nodes in an \code{hclust} tree.
 }
 \examples{
+\dontrun{
 # For a perfect binary tree of depth 2 below
 #
 #      3
@@ -51,6 +52,7 @@ all(A_true == as.matrix(A))
 # Another example
 hc <- hclust(dist(USArrests), "ave")
 A <- tree.matrix(hc)
+}
 
 }
 \references{

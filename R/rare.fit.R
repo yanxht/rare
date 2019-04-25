@@ -18,6 +18,7 @@
 #' \code{ind}, we use positive integers to denote leaves here.
 #'
 #' @examples
+#' \dontrun{
 #' hc <- hclust(dist(USArrests), "ave")
 #' # Descendant leaves of the 10th leaf (should be iteself)
 #' find.leaves(-10, hc$merge)
@@ -28,6 +29,7 @@
 #' # Descendant leaves of the root (should be all leaves)
 #' ind_root <- nrow(hc$merge)
 #' all.equal(find.leaves(ind_root, hc$merge), hc$order)
+#' }
 #'
 #' @export
 find.leaves <- function(ind, merge) {
@@ -59,6 +61,7 @@ find.leaves <- function(ind, merge) {
 #' @seealso \code{\link{find.leaves}} for finding descendant leaves of a node.
 #'
 #' @examples
+#' \dontrun{
 #' # For a perfect binary tree of depth 2 below
 #' #
 #' #      3
@@ -83,6 +86,7 @@ find.leaves <- function(ind, merge) {
 #' # Another example
 #' hc <- hclust(dist(USArrests), "ave")
 #' A <- tree.matrix(hc)
+#' }
 #'
 #' @references Yan, X. and Bien, J. (2018) \emph{Rare Feature Selection in High Dimensions}, \url{https://arxiv.org/abs/1803.06675}.
 #'

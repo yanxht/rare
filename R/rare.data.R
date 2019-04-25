@@ -2,7 +2,7 @@
 #'
 #' A length-500 TripAdvisor review ratings on the scale 1 to 5.
 #'
-#' @source TripAdvisor Data Set: \url{http://times.cs.uiuc.edu/~wang296/Data/}
+#' @source TripAdvisor Data Set used in \url{https://www.cs.virginia.edu/~hw5x/paper/rp166f-wang.pdf}
 "data.rating"
 
 

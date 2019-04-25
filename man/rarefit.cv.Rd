@@ -4,7 +4,8 @@
 \alias{rarefit.cv}
 \title{Perform K-fold cross validation}
 \usage{
-rarefit.cv(fitObj, y, X, errtype = "mean-squared-error", nfolds = 5, ...)
+rarefit.cv(fitObj, y, X, errtype = "mean-squared-error", nfolds = 5,
+  ...)
 }
 \arguments{
 \item{fitObj}{Output of \code{rarefit}}

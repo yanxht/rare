@@ -28,6 +28,7 @@ The function recursively finds all leaves that are descendants of a
 node in an \code{hclust} tree.
 }
 \examples{
+\dontrun{
 hc <- hclust(dist(USArrests), "ave")
 # Descendant leaves of the 10th leaf (should be iteself)
 find.leaves(-10, hc$merge)
@@ -38,5 +39,6 @@ find.leaves(10, hc$merge)
 # Descendant leaves of the root (should be all leaves)
 ind_root <- nrow(hc$merge)
 all.equal(find.leaves(ind_root, hc$merge), hc$order)
+}
 
 }

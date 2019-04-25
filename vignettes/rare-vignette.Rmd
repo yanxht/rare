@@ -77,7 +77,7 @@ determined via cross validation. Refer to @yan2018 for more details of the propo
 
 ## A Data Example
 To demonstrate the usage of `rare`, we use a review data set crawled from TripAdvisor.com 
-(available at <http://times.cs.uiuc.edu/~wang296/Data/>) as an example. 
+(used in <https://www.cs.virginia.edu/~hw5x/paper/rp166f-wang.pdf>) as an example. 
 The original data set contains more than 200 thousands reviews and ratings.
 . For the sake of the demonstration, we randomly subset 500 reviews and 200 adjectives appearing in them
 from the data set. In each review, user provides a rating on the scale
@@ -86,7 +86,7 @@ $y_i = \beta_0^* + \sum_{j=1}^pX_{ij}\beta_j^* + \epsilon_i$ where $y_i$ is the 
 $X_{ij}$ counts the $j$th adjective in the $i$th review and $\epsilon_i\sim N(0, \sigma^2)$ i.i.d. for $\sigma>0$.
 We attach the sample data and a pre-trained hierarchical clustering tree to the package in `data.rating`, `data.dtm` and `data.hc`. 
 
-```{r}
+```{r, eval=T, include=T}
 library(rare)
 library(Matrix)
 # Design matrix = document-term matrix
@@ -98,7 +98,7 @@ length(data.rating)
 The data set contains 200 adjectives in the sample and most of them are highly sparse. Below is a histogram of
 percentage of reviews using adjective.
 
-```{r, fig.height=4, fig.width=7}
+```{r, fig.height=4, fig.width=7, eval=T, include=T}
 hist(colMeans(sign(data.dtm)) * 100, breaks = 50, main = "Histogram of Adjective Rarity in the TripAdvisor Sample", 
      xlab = "% of Reviews Using Adjective")
 ```
@@ -111,7 +111,7 @@ sentiments using 5NN. In the hierarchical clustering step, we apply `hclust` on 
 for adjectives, which are pre-trained by GloVe [@pennington2014] on Gigaword5 and Wikipedia2014 corpora. The 
 following dendrogram depicts the tree with 200 adjectives on the leaves.
 
-```{r, results='hide', fig.height=3, fig.width=10}
+```{r, results='hide', fig.height=3, fig.width=10, eval=T, include=T}
 par(cex=0.35)
 plot(as.dendrogram(data.hc))
 ```
@@ -124,7 +124,7 @@ plot(as.dendrogram(data.hc))
 ## Fit the Model
 We split the sample data into training set and test set at the ratio of 4:1. 
 
-```{r}
+```{r, eval=T, include=T}
 set.seed(100)
 ts <- sample(1:length(data.rating), 400) # Train set indices
 ```
@@ -135,7 +135,11 @@ regularization parameters $(\lambda, \alpha)$.
 The `rarefit` function implements the model fit alongside $\alpha$, i.e., at each $\alpha$ the model is fitted
 over the entire sequence of $\lambda$ values. 
 
-```{r, eval=T}
+```{r, eval=T, include=F}
+load("vignette_results.RData")
+```
+
+```{r, eval=F, include=T}
 ourfit <- rarefit(y = data.rating[ts], X = data.dtm[ts, ], hc = data.hc, lam.min.ratio = 1e-6,
                   nlam = 20, nalpha = 10, rho = 0.01, eps1 = 1e-5, eps2 = 1e-5, maxite = 1e4)
 ```
@@ -194,7 +198,7 @@ An option that allows user to customize CV is `errtype`, a character string indi
 error function. Two error types are allowed: `errtype = "mean-squared-error"` or `errtype = "mean-absolute-error"`.
 The default value for K is `nfolds=5`.
 
-```{r, eval=T}
+```{r, eval=F, include=T}
 # Cross validation
 ourfit.cv <- rarefit.cv(ourfit, y = data.rating[ts], X = data.dtm[ts, ],
                         rho = 0.01, eps1 = 1e-5, eps2 = 1e-5, maxite = 1e4)
@@ -213,7 +217,7 @@ the hold-out test set (100 reviews and ratings from the sample). The function `r
 is the one-click function for making new predictions, based on model fit object `ourfit`
 and CV object `ourfit.cv` (for choosing optimal $(\lambda, \alpha)$).
 
-```{r, eval = T}
+```{r, eval=F, include=T}
 # Prediction on test set
 pred <- rarefit.predict(ourfit, ourfit.cv, data.dtm[-ts, ])
 pred.error <- mean((pred - data.rating[-ts])^2)
@@ -249,7 +253,7 @@ Since `rarefit` returns `NA` for $\hat\gamma$ when solving at $\alpha = 0$, `gro
 In the following, we find the groups aggregated at 
 $(\hat\beta_0({\hat\lambda}_{CV}, {\hat\alpha}_{CV}), \hat\beta({\hat\lambda}_{CV}, {\hat\alpha}_{CV}))$.
 
-```{r, eval=T}
+```{r, eval=T, include=T}
 # Find recovered groups at optimal beta and gamma
 ibest.lambda <- ourfit.cv$ibest[1]
 ibest.alpha <- ourfit.cv$ibest[2]
@@ -268,7 +272,7 @@ will have the same color. In the following, we visualize the groups aggregated a
 $(\hat\beta_0({\hat\lambda}_{CV}, {\hat\alpha}_{CV}), \hat\beta({\hat\lambda}_{CV}, {\hat\alpha}_{CV}))$.
 
 
-```{r, eval=T, results='hide', fig.height=3, fig.width=10}
+```{r, eval=T, include=T, results='hide', fig.height=3, fig.width=10}
 # Visualize the groups at optimal beta and gamma
 par(cex=0.35)
 group.plot(beta.opt, gamma.opt, ourfit$A, data.hc)

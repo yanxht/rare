@@ -100,13 +100,15 @@ group.plot <- function(beta, gamma, A, hc, nbreaks = 20) {
   groupvec <- as.vector(membership %*% seq(length(group)))
 
   # convert hc to dendrogram
-  hcd = as.dendrogram(hc)
+  hcd <- as.dendrogram(hc)
   beta_grp <- beta[unlist(lapply(group, function(x) x[1]))] # clustered beta_grp values
   beta_grp_neg <- beta_grp[beta_grp < 0]
   beta_grp_pos <- beta_grp[beta_grp > 0]
   # make breaks for color
-  breaks_neg <- seq(min(beta_grp_neg), max(beta_grp_neg), len = nbreaks)
-  breaks_pos <- seq(min(beta_grp_pos), max(beta_grp_pos), len = nbreaks)
+  if (length(beta_grp_neg) > 0)
+    breaks_neg <- seq(min(beta_grp_neg), max(beta_grp_neg), len = nbreaks)
+  if (length(beta_grp_pos) > 0)
+    breaks_pos <- seq(min(beta_grp_pos), max(beta_grp_pos), len = nbreaks)
   # make color palettes for negative and positive parts respectively
   # (blue-gray95-red = positive-0-negative)
   colfunc1 <- colorRampPalette(c("lightgray", "blue"))
@@ -117,8 +119,10 @@ group.plot <- function(beta, gamma, A, hc, nbreaks = 20) {
   # color labels and branches
   col_cluster <- rep(NA, len = length(beta_grp))
   col_cluster[beta_grp == 0] <- col0
-  col_cluster[beta_grp < 0 & beta_grp != 0] <- colneg[findInterval(beta_grp_neg, breaks_neg)]
-  col_cluster[beta_grp > 0 & beta_grp != 0] <- colpos[findInterval(beta_grp_pos, breaks_pos)]
+  if (length(beta_grp_neg) > 0)
+    col_cluster[beta_grp < 0 & beta_grp != 0] <- colneg[findInterval(beta_grp_neg, breaks_neg)]
+  if (length(beta_grp_pos) > 0)
+    col_cluster[beta_grp > 0 & beta_grp != 0] <- colpos[findInterval(beta_grp_pos, breaks_pos)]
   dend_col <- dendextend::color_labels(hcd, labels = hc$labels[hc$order], col = col_cluster[groupvec][hc$order])
   dend_col <- dendextend::color_branches(dend_col, col = col_cluster[unique(groupvec[hc$order])], clusters = groupvec[hc$order])
   plot(dend_col)

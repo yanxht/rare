@@ -26,7 +26,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.2
 LinkingTo: Rcpp, RcppArmadillo
 URL: https://github.com/yanxht/rare
 BugReports: https://github.com/yanxht/rare/issues

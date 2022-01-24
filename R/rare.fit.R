@@ -268,5 +268,50 @@ rarefit <- function(y, X, A = NULL, Q = NULL, hc, intercept = T, lambda = NULL, 
   if (intercept) {
     beta0 <- lapply(beta, function(b) (sum(y) - c(matrix(colSums(X), nrow = 1) %*% b))/n)
   }
-  list(beta0 = beta0, beta = beta, gamma = gamma, lambda = lambda, alpha = alpha, A = A, Q = Q, intercept = intercept)
+  out <- list(beta0 = beta0, beta = beta, gamma = gamma, lambda = lambda, alpha = alpha, A = A, Q = Q, intercept = intercept)
+  class(out) <- "rarefit"
+  return(out)
+}
+
+#' Print information about a rarefit object
+#'
+#' @param x rarefit object
+#' @param ... additional parameters (not used)
+#' @export
+#' @method print rarefit
+print.rarefit <- function(x, ...) {
+  cat("Number of groups (for each alpha/lambda pair):", fill = TRUE)
+  count_groups <- function(gvec) length(unique(group.recover(gvec, x$A)))
+  num_groups <- matrix(NA, length(x$lambda), length(x$alpha))
+  for (i in seq_along(x$gamma)) {
+    if (length(x$gamma[[i]]) == 1) next
+    num_groups[, i] <- apply(x$gamma[[i]], 2, count_groups)
+  }
+  rownames(num_groups) <- paste0("lambda", 1:length(x$lambda))
+  colnames(num_groups) <- paste0("alpha", 1:length(x$alpha))
+  print(num_groups)
+}
+
+#' Plot a rarefit object
+#'
+#' @param x rarefit object
+#' @param y unused argument
+#' @param alpha_index specify which alpha value to plot
+#' @param type "beta" or "gamma" determines which path is to be plotted
+#' @param ... additional parameters passed to `matplot`
+#' @export
+#' @method plot rarefit
+plot.rarefit <- function(x, y, alpha_index = NULL, type = c("beta", "gamma"),
+                         ...) {
+  if (is.null(alpha_index)) stop("Please specify an alpha_index.")
+  type <- match.arg(type)
+  if (length(x$gamma[[alpha_index]]) == 1 & type == "gamma")
+    stop("Only beta available for this alpha_index.")
+  matplot(x$lambda,
+          t(x[[type]][[alpha_index]]), type = "l", log="x",
+          xlab = "lambda",
+          ylab = type,
+          main = paste0("Regularization path for alpha = ",
+                        round(x$alpha[alpha_index], 4)),
+          ...)
 }

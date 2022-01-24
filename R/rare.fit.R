@@ -291,3 +291,27 @@ print.rarefit <- function(x, ...) {
   colnames(num_groups) <- paste0("alpha", 1:length(x$alpha))
   print(num_groups)
 }
+
+#' Plot a rarefit object
+#'
+#' @param x rarefit object
+#' @param y unused argument
+#' @param alpha_index specify which alpha value to plot
+#' @param type "beta" or "gamma" determines which path is to be plotted
+#' @param ... additional parameters passed to `matplot`
+#' @export
+#' @method plot rarefit
+plot.rarefit <- function(x, y, alpha_index = NULL, type = c("beta", "gamma"),
+                         ...) {
+  if (is.null(alpha_index)) stop("Please specify an alpha_index.")
+  type <- match.arg(type)
+  if (length(x$gamma[[alpha_index]]) == 1 & type == "gamma")
+    stop("Only beta available for this alpha_index.")
+  matplot(x$lambda,
+          t(x[[type]][[alpha_index]]), type = "l", log="x",
+          xlab = "lambda",
+          ylab = type,
+          main = paste0("Regularization path for alpha = ",
+                        round(x$alpha[alpha_index], 4)),
+          ...)
+}
